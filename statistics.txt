@@ -1,0 +1,95 @@
+>#to read a csv file
+> data=read.csv("D:/stats.csv")
+>#mean
+> mean=mean(data$Unit.Cost)
+> cat("The mean value of Cost is ",mean)
+The mean value of Cost is  191.048> 
+> #median
+> median=median(data$Unit.Cost)
+> cat("The median value of Cost is ",median)
+The median value of Cost is  107.275> 
+> #mode
+> getmode<-function(v){
++   uniqv<-unique(v)
++   uniqv[which.max(tabulate(match(v,uniqv)))]
++ }
+> mode=getmode(data$Unit.Cost)
+> cat("The Mode value of Cost is ",mode)
+The Mode value of Cost is  35.84> 
+> #Standard Deviation
+> standard_deviation=sd(data$Unit.Cost)
+> cat("The standard deviation of Cost is ",standard_deviation)
+The standard deviation of Cost is  188.2082> 
+> #Variance
+> variance=var(data$Unit.Cost)
+> cat("The variance value of Cost is ",variance)
+The variance value of Cost is  35422.32> 
+> #skewnesss
+> numerator=3*(mean-median)
+> value=numerator/standard_deviation
+> cat("The skewness value is ",value)
+The skewness value is  1.335325> 
+> #Mean Deviation
+> mean=mean(data$Unit.Cost)
+> column=data$Unit.Cost-mean
+> mean_dev=mean(column)
+> cat("The mean deviation value of Cost is ",mean_dev)
+The mean deviation value of Cost is  1.849354e-15> 
+> #Geometric Mean
+> geo_mean<-function(data) {
++   log_data<-log(data)
++   gm<-exp(mean(log_data[is.finite(log_data)]))
++ 
++ return(gm)
++ }
+> geometric_mean=geo_mean(data$Unit.Cost)
+> cat("The Goemetric Mean of Cost is ",geometric_mean)
+The Goemetric Mean of Cost is  98.44307> 
+> #Range
+> range_value=range(data$Unit.Cost)
+> cat("The Range value of Cost is ",range_value)
+The Range value of Cost is  6.92 524.96> 
+> #nth Percentile
+> Unit.Cost=data$Unit.Cost
+> percentile=quantile(Unit.Cost,c(.32,.57,.98))
+> cat("The percentile value of Cost is ",percentile)
+The percentile value of Cost is  56.67 135.3033 524.96> 
+> #First and Second Quartile
+> first=quantile(data$Unit.Cost,0.25)
+> second=quantile(data$Unit.Cost,0.5)
+> cat("The First and Second Quartile values are ",first,second)
+The First and Second Quartile values are  35.84 107.275> 
+> #Quartile Deviation
+> first=quantile(data$Unit.Cost,0.25)
+> third=quantile(data$Unit.Cost,0.75)
+> Quartile_Deviation=(third-first)/2
+> cat("The  Quartile DEviation value of Cost is ",Quartile_Deviation)
+The  Quartile DEviation value of Cost is  113.745> 
+> #any two deciles
+> first=quantile(data$Unit.Cost,0.1)
+> second=quantile(data$Unit.Cost,0.2)
+> cat("The two deciles value of Cost is ",first,second)
+The two deciles value of Cost is  29.303 35.84> 
+> #Sum of column values
+> sum=sum(data$Unit.Cost)
+> cat("The sum of values of Cost column is ",sum)
+The sum of values of Cost column is  19104.8> 
+> #Minimum of column values
+> Minimum=min(data$Unit.Cost)
+> cat("The Minimum values of Cost column is ",Minimum)
+The Minimum values of Cost column is  6.92> 
+> #Maximum of column values
+> Maximum=max(data$Unit.Cost)
+> cat("the Maximum values of Cost is ",Maximum)
+the Maximum values of Cost is  524.96> 
+> #Harmonic 
+> col=data$Unit.Cost
+> sum=0
+> for(i in col){
++ val=(1/i)
++ sum=sum+val
++ }
+> numerator=length(data$Unit.Cost)
+> harmonic_mean=(numerator/sum)
+> cat("The harmonic mean is ",harmonic_mean)
+The harmonic mean is  39.49453> 
